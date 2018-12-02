@@ -124,11 +124,10 @@ class BestFirstSearch(GraphProblemSolver):
                 if next_node_to_expand is None:
                     break
 
+                nr_expanded_states += 1
                 if problem.is_goal(next_node_to_expand.state):
                     final_search_node = next_node_to_expand
                     break
-
-                nr_expanded_states += 1
 
                 # Iterate over next states and perform the update step for each.
                 for successor_state, operator_cost in problem.expand_state_with_costs(next_node_to_expand.state):

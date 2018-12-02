@@ -87,9 +87,13 @@ class RelaxedDeliveriesHeuristic(HeuristicFunction):
         small_delivery = DeliveriesProblemInput(input_name=state.__str__(),
                                                 start_point=state.current_location,
                                                 drop_points=self.problem.drop_points.difference(state.dropped_so_far),
+
                                                 gas_stations=self.problem.gas_stations,
-                                                gas_tank_capacity=state.fuel,
-                                                gas_tank_init_fuel=self.problem.gas_tank_capacity)
+
+                                                #gas_tank_capacity=state.fuel,
+                                                gas_tank_capacity=self.problem.gas_tank_capacity,
+                                                #gas_tank_init_fuel=self.problem.gas_tank_capacity,
+                                                gas_tank_init_fuel=state.fuel)
         small_deliveries_prob = RelaxedDeliveriesProblem(small_delivery)
 
         a_star_mst_air_dist_heuristic = AStar(MSTAirDistHeuristic)
